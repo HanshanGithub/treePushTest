@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
+#include <QIcon>
 
 namespace Ui {
 class MainWindow;
@@ -20,6 +23,11 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    // 添加根节点
+    QTreeWidgetItem *rootItem;
+
+public:
+    void initRootItem();
 };
 
 #endif // MAINWINDOW_H
