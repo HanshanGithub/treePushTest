@@ -5,6 +5,7 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QIcon>
+#include <QtWidgets/QWidget>
 
 namespace Ui {
 class MainWindow;
@@ -20,6 +21,7 @@ public:
 
 private slots:
     void on_addWidgetItem_clicked();
+    void on_treeWidget_itemSelectionChanged();
 
 private:
     Ui::MainWindow *ui;

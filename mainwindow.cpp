@@ -46,3 +46,11 @@ void MainWindow::initRootItem()
     rootItem->setText(0, "Root Item");
     rootItem->setIcon(0, QIcon("E:/_Files/fir.png"));
 }
+
+void MainWindow::on_treeWidget_itemSelectionChanged()
+{
+    QTreeWidgetItem *item = ui->treeWidget->currentItem();
+    ui->textBrowser->append(item->text(0)+" click once");
+}
+
+
