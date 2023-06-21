@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
     ui->setupUi(this);
-
+    itemNum = 0 ;
     initRootItem();
 }
 
@@ -22,12 +22,8 @@ void MainWindow::on_addWidgetItem_clicked()
 
     // 添加子项
     QTreeWidgetItem *item1 = new QTreeWidgetItem(rootItem);
-    item1->setText(0, "Item 1");
+    item1->setText(0, "Item "+QString::number(++itemNum));
     item1->setIcon(0, QIcon("E:/_Files/sec.png"));
-
-    QTreeWidgetItem *item2 = new QTreeWidgetItem(rootItem);
-    item2->setText(0, "Item 2");
-    item2->setIcon(0, QIcon("E:/_Files/sec.png"));
 
     // 展开根节点
     ui->treeWidget->expandItem(rootItem);

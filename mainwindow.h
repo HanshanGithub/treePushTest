@@ -25,6 +25,8 @@ private:
     Ui::MainWindow *ui;
     // 添加根节点
     QTreeWidgetItem *rootItem;
+    // 子节点编号
+    int itemNum;
 
 public:
     void initRootItem();
