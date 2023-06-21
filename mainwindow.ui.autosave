@@ -27,14 +27,14 @@
    <widget class="QPushButton" name="addWidgetItem">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>260</y>
-      <width>161</width>
-      <height>23</height>
+      <x>330</x>
+      <y>30</y>
+      <width>91</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>add treeWidget item</string>
+     <string>Add Item</string>
     </property>
    </widget>
   </widget>
