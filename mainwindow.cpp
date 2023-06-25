@@ -54,7 +54,7 @@ void MainWindow::initRootItem()
     rootItem->setText(0, "Excitation numerical analysis");//中文乱码，目前是编码问题
     rootItem->setIcon(0, QIcon("E:/_Files/kFiles/fir.png"));
 
-    rootMap = new QMap<QString, QMap<QString, QString>>();
+    rootMap = new QMap<QString, QMap<QString, QString>*>();
 }
 
 void MainWindow::on_treeWidget_itemSelectionChanged()
@@ -62,9 +62,9 @@ void MainWindow::on_treeWidget_itemSelectionChanged()
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
     // item文本:item->text(0）
     // item的属性值:用Json保存？
-    QMap<QString, QString> map1 = (*rootMap)['*'+item->text(0)];
+    QMap<QString, QString>* map1 = (*rootMap)['*'+item->text(0)];
 
-    QMap<QString, QString>::Iterator it = map1.begin();
+    QMap<QString, QString>::Iterator it = map1->begin();
     int lineCount = 0;
     
 
@@ -75,7 +75,7 @@ void MainWindow::on_treeWidget_itemSelectionChanged()
     /* 自适应所有列，让它布满空间 */
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     /* 加载数据 */
-    while (it != map1.end())
+    while (it != map1->end())
     {
         //ui->textBrowser->append(it.key() + "\t" + it.value());
         model->setItem(lineCount, 0, new QStandardItem(it.key()));
@@ -152,6 +152,7 @@ void MainWindow::on_actionOpen_triggered()
 
     QTextStream in(&file);
     QString kItem; // 上一个选项卡名字
+    QMap<QString, QString> *itemMap;
     while (!in.atEnd()) {
         QByteArray line = file.readLine();
         QString str(line);
@@ -161,10 +162,11 @@ void MainWindow::on_actionOpen_triggered()
         // 判断选项卡
         if (str.at(0) == '*') {
             // 如果是则跳过
-            if (str == "*NODE" || str == "*ELEMENT_SOLID" || str == "*KEYWORD" || str == "*PARAMETER_DUPLICATION")
+            if (str == "*NODE" || str == "*ELEMENT_SOLID" || str == "*KEYWORD" || str == "*PARAMETER_DUPLICATION" || str == "*END")
                 continue;
             addKitem(kfileitem, str.mid(1));
             kItem = str;
+            itemMap = new QMap<QString, QString>();
         }
         // 添加选项卡属性值
         else if (str.at(0) == '$' && str.at(1)!= '#') {
@@ -173,9 +175,8 @@ void MainWindow::on_actionOpen_triggered()
             int len = key.length();
             if (key[len - 1] == "unused" || key[len - 1] == "unused1"|| key[len - 1] == "unused2")
                 --len;
-            QMap<QString, QString> itemMap;
-            /*itemMap.insert("属性", "值");
-            itemMap.insert("名称", kItem);*/
+            /*itemMap.insert("属性", "值");*/
+            itemMap->insert("Name", kItem.mid(1));
 
             line = file.readLine(); // 属性的值 下标0开始
             QString strvalue(line);
@@ -184,9 +185,10 @@ void MainWindow::on_actionOpen_triggered()
             strvalue = strvalue.simplified();
             QStringList value = strvalue.split(" "); // 下标0开始
             
+
             for (int i = 0; i < len - 1; i++) {
                 QT_TRY{
-                    itemMap.insert(key[i + 1], value[i]);
+                    itemMap->insert(key[i + 1], value[i]);
                 }
                 QT_CATCH(...) {
                     ui->textBrowser->append("出错信息" + QString::number(i));

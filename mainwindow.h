@@ -43,7 +43,7 @@ private:
     // 子节点编号
     int itemNum;
     // 2级结点的键值
-    QMap<QString, QMap<QString, QString>> *rootMap;
+    QMap<QString, QMap<QString, QString>*> *rootMap;
 
 public:
     void initRootItem();
