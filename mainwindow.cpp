@@ -147,11 +147,11 @@ void MainWindow::on_actionOpen_triggered()
             
             QStringList key = str.split(" "); // 下标1开始，最后一个为unused要丢弃
             int len = key.length();
-            if (key[len - 1] == "unseud")
+            if (key[len - 1] == "unused")
                 --len;
             QMap<QString, QString> itemMap;
-            itemMap.insert("属性", "值");
-            itemMap.insert("名称", kItem);
+            /*itemMap.insert("属性", "值");
+            itemMap.insert("名称", kItem);*/
 
             line = file.readLine(); // 属性的值 下标0开始
             QString strvalue(line);
@@ -160,7 +160,9 @@ void MainWindow::on_actionOpen_triggered()
             
             for (int i = 0; i < len - 1; i++)
                 itemMap.insert(key[i + 1], value[i]);
+
             rootMap->insert(kItem, itemMap);
+
         }
     }
 
