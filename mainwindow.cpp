@@ -18,12 +18,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_addWidgetItem_clicked()
 {
-
-
     // 添加子项
     QTreeWidgetItem *item1 = new QTreeWidgetItem(rootItem);
     item1->setText(0, "Item "+QString::number(++itemNum));
-    item1->setIcon(0, QIcon("E:/_Files/sec.png"));
+    item1->setIcon(0, QIcon("E:/_Files/kFiles/sec.png"));
 
     // 展开根节点
     ui->treeWidget->expandItem(rootItem);
@@ -43,8 +41,8 @@ void MainWindow::initRootItem()
     ui->treeWidget->header()->setVisible(false);
 
     rootItem = new QTreeWidgetItem(ui->treeWidget);
-    rootItem->setText(0, "Root Item");
-    rootItem->setIcon(0, QIcon("E:/_Files/fir.png"));
+    rootItem->setText(0, "Excitation numerical analysis");//中文乱码，目前是编码问题
+    rootItem->setIcon(0, QIcon("E:/_Files/kFiles/fir.png"));
 }
 
 void MainWindow::on_treeWidget_itemSelectionChanged()
@@ -55,18 +53,37 @@ void MainWindow::on_treeWidget_itemSelectionChanged()
 
 
 
-void MainWindow::on_showKfileBtn_clicked()
+void MainWindow::on_showKfileBtn_clicked() // showKfileBtn控件名字
 {
     QString fileName = QFileDialog::getOpenFileName(// 正常加载
-                    this, "open image file",
+                    this, "open k file",
                     ".",
-                    "Image files (*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm);;All files (*.*)");
-//    QFile file("Hello.txt");
-    QFile file(fileName);
-    if(!file.open(QFile::ReadOnly|QFile::Text))
-//    qDebug() << "Can not open";
-    QTextStream iin(&file);
-    ui->textBrowser->setText(iin->readAll());
-    ui->textBrowser->show();
+                    "k files (*.k);;All files (*.*)");
+	QFile file(fileName);
+	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+		return;
+	QTextStream in(&file);
+	while (!in.atEnd()) {
+		QByteArray line = file.readLine();
+		QString str(line);
+		str.remove("\n");
+		if (str.at(0) == '*')
+			addKitem(str.mid(1));
+		ui->textBrowser->append(str);
+	}
+	file.close();
+}
 
+void MainWindow::addKitem(QString item)
+{
+	// 添加子项
+	QTreeWidgetItem *item1 = new QTreeWidgetItem(rootItem);
+	item1->setText(0, item);
+	item1->setIcon(0, QIcon("E:/_Files/kFiles/sec.png"));
+
+	// 展开根节点
+	ui->treeWidget->expandItem(rootItem);
+
+	// 显示树形视图
+	ui->treeWidget->show();
 }
