@@ -53,6 +53,8 @@ void MainWindow::initRootItem()
     rootItem = new QTreeWidgetItem(ui->treeWidget);
     rootItem->setText(0, "Excitation numerical analysis");//中文乱码，目前是编码问题
     rootItem->setIcon(0, QIcon("E:/_Files/kFiles/fir.png"));
+
+    rootMap = new QMap<QString, QMap<QString, QString>>();
 }
 
 void MainWindow::on_treeWidget_itemSelectionChanged()
@@ -141,13 +143,21 @@ void MainWindow::on_actionOpen_triggered()
         }
         // 添加选项卡属性值
         else if (str.at(0) == '$') {
+            
+            QStringList key = str.split(" "); // 下标1开始，最后一个为unused要丢弃
+            int len = key.length();
+            ui->textBrowser->append("str.split lenth is " + QString::number(len));
 
+            //line = file.readLine(); // 属性的值 下标0开始
+            
         }
     }
 
     ui->treeWidget->expandAll();
     file.close();
 }
+
+
 
 // 递归删除节点
 void MainWindow::removeItem(QTreeWidgetItem* item)

@@ -39,12 +39,15 @@ private:
     QTreeWidgetItem *rootItem;
     // 子节点编号
     int itemNum;
+    // 2级结点的键值
+    QMap<QString, QMap<QString, QString>> *rootMap;
 
 public:
     void initRootItem();
 	void addKitem(QTreeWidgetItem* root,QString item);
     void removeItem(QTreeWidgetItem* item);
     void removeAll_treeWidgetItemv();
+    void addItemKv(QFile& file, QString&);
 };
 
 #endif // MAINWINDOW_H
