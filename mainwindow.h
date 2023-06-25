@@ -30,9 +30,8 @@ public:
 
 private slots:
     void on_treeWidget_itemSelectionChanged();
-
-
     void on_actionOpen_triggered();
+    void OnlineTreeViewDoubleClick(QTreeWidgetItem*, int);
 
 private:
     Ui::MainWindow *ui;
@@ -42,6 +41,9 @@ private:
     int itemNum;
     // 2级结点的键值
     QMap<QString, QMap<QString, QString>*> *rootMap;
+
+    // 双击响应
+    QTreeWidget* treeWidget_set;
 
 public:
     void initRootItem();

@@ -193,3 +193,10 @@ void MainWindow::removeAll_treeWidgetItemv(void)
         item = ui->treeWidget->topLevelItem(0);
     }
 }
+
+
+void MainWindow::OnlineTreeViewDoubleClick(QTreeWidgetItem* indexItem, int itemID)
+{
+    QString itemText = indexItem->text(itemID);
+    //qDebug() << "--" << itemText;
+}
