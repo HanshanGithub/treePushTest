@@ -101,3 +101,31 @@ void MainWindow::addKitem(QTreeWidgetItem* root, QString item)
 	// 显示树形视图
 	ui->treeWidget->show();
 }
+
+void MainWindow::on_actionOpen_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(// 正常加载
+                    this, "open k file",
+                    ".",
+                    "k files (*.k);;All files (*.*)");
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    // 添加文件的2级结点
+    QTreeWidgetItem *kfileitem = new QTreeWidgetItem(rootItem);
+    kfileitem->setText(0, fileName.mid(fileName.lastIndexOf('/')+1));
+    kfileitem->setIcon(0, QIcon("E:/_Files/kFiles/fir.png"));
+
+    QTextStream in(&file);
+    while (!in.atEnd()) {
+        QByteArray line = file.readLine();
+        QString str(line);
+        str.remove("\n");
+        if (str.at(0) == '*')
+            addKitem(kfileitem,str.mid(1));
+        ui->textBrowser->append(str);
+    }
+    ui->treeWidget->expandAll();
+    file.close();
+}

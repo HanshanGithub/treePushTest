@@ -31,6 +31,8 @@ private slots:
 
     void on_showKfileBtn_clicked();
 
+    void on_actionOpen_triggered();
+
 private:
     Ui::MainWindow *ui;
     // 添加根节点

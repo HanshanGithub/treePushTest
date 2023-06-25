@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>895</width>
-    <height>608</height>
+    <width>1178</width>
+    <height>762</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>221</width>
-      <height>211</height>
+      <width>321</width>
+      <height>301</height>
      </rect>
     </property>
     <column>
@@ -33,33 +33,20 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>220</y>
-      <width>221</width>
-      <height>221</height>
+      <y>310</y>
+      <width>321</width>
+      <height>381</height>
      </rect>
     </property>
    </widget>
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>330</x>
       <y>10</y>
-      <width>431</width>
-      <height>431</height>
+      <width>841</width>
+      <height>681</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="showKfileBtn">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>180</y>
-      <width>111</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Show K File</string>
     </property>
    </widget>
   </widget>
@@ -68,7 +55,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>895</width>
+     <width>1178</width>
      <height>23</height>
     </rect>
    </property>

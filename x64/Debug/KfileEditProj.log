@@ -1,17 +1,25 @@
-﻿生成启动时间为 2023/6/25 11:58:28。
+﻿生成启动时间为 2023/6/25 13:59:56。
      1>项目“E:\QtProject\KfileEditProj\KfileEditProj.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          E:\soft\vs2015\VC\bin\x86_amd64\CL.exe /c /I.\GeneratedFiles\Debug /I.\GeneratedFiles /I. /I..\..\SOFT\QT\QT5.12.1\5.12.1\MSVC2015_64\include /I..\..\SOFT\QT\QT5.12.1\5.12.1\MSVC2015_64\include\QtWidgets /I..\..\SOFT\QT\QT5.12.1\5.12.1\MSVC2015_64\include\QtGui /I..\..\SOFT\QT\QT5.12.1\5.12.1\MSVC2015_64\include\QtANGLE /I..\..\SOFT\QT\QT5.12.1\5.12.1\MSVC2015_64\include\QtCore /Idebug /IC:\VulkanSDK\1.0.51.0\include /I"..\..\SOFT\QT\QT5.12.1\5.12.1\MSVC2015_64\mkspecs\win32-msvc" /Zi /nologo /W3 /WX- /MP /Od /D _WINDOWS /D UNICODE /D _UNICODE /D WIN32 /D _ENABLE_EXTENDED_ALIGNED_STORAGE /D WIN64 /D QT_DEPRECATED_WARNINGS /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_CORE_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /wd4577 /wd4467 /errorReport:prompt -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 mainwindow.cpp
          mainwindow.cpp
      1>mainwindow.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
      1>e:\qtproject\kfileeditproj\mainwindow.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-       Link:
-         E:\soft\vs2015\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"debug\\KfileEditProj.exe" /NOLOGO /LIBPATH:E:\soft\QT\QT5.12.1\5.12.1\msvc2015_64\lib /LIBPATH:E:\SOFT\QT\QT5.12.1\5.12.1\MSVC2015_64\lib E:\soft\QT\QT5.12.1\5.12.1\msvc2015_64\lib\Qt5Widgetsd.lib E:\soft\QT\QT5.12.1\5.12.1\msvc2015_64\lib\Qt5Guid.lib E:\soft\QT\QT5.12.1\5.12.1\msvc2015_64\lib\Qt5Cored.lib E:\soft\QT\QT5.12.1\5.12.1\msvc2015_64\lib\qtmaind.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"debug\KfileEditProj.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X64 "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" x64\Debug\main.obj
-         x64\Debug\mainwindow.obj
-         x64\Debug\moc_mainwindow.obj
-         KfileEditProj.vcxproj -> E:\QtProject\KfileEditProj\debug\KfileEditProj.exe
-     1>已完成生成项目“E:\QtProject\KfileEditProj\KfileEditProj.vcxproj”(Build 个目标)的操作。
+     1>mainwindow.cpp(105): error C2039: “on_actionOpen_triggered”: 不是“MainWindow”的成员
+         e:\qtproject\kfileeditproj\mainwindow.h(20): note: 参见“MainWindow”的声明
+     1>mainwindow.cpp(108): error C2355: “this”: 只能在非静态成员函数或非静态数据成员初始值设定项的内部引用
+     1>mainwindow.cpp(116): error C2065: “rootItem”: 未声明的标识符
+     1>mainwindow.cpp(126): error C3861: “addKitem”: 找不到标识符
+     1>mainwindow.cpp(127): error C2065: “ui”: 未声明的标识符
+     1>mainwindow.cpp(127): error C2227: “->textBrowser”的左边必须指向类/结构/联合/泛型类型
+         mainwindow.cpp(127): note: 类型是“unknown-type”
+     1>mainwindow.cpp(127): error C2227: “->append”的左边必须指向类/结构/联合/泛型类型
+     1>mainwindow.cpp(129): error C2065: “ui”: 未声明的标识符
+     1>mainwindow.cpp(129): error C2227: “->treeWidget”的左边必须指向类/结构/联合/泛型类型
+         mainwindow.cpp(129): note: 类型是“unknown-type”
+     1>mainwindow.cpp(129): error C2227: “->expandAll”的左边必须指向类/结构/联合/泛型类型
+     1>已完成生成项目“E:\QtProject\KfileEditProj\KfileEditProj.vcxproj”(Build 个目标)的操作 - 失败。
 
-已成功生成。
+生成失败。
 
-已用时间 00:00:01.18
+已用时间 00:00:00.75
