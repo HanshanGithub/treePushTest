@@ -40,7 +40,7 @@ private:
 
 public:
     void initRootItem();
-	void addKitem(QString item);
+	void addKitem(QTreeWidgetItem root,QString item);
 };
 
 #endif // MAINWINDOW_H
