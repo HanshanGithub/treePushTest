@@ -16,7 +16,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QTextBrowser>
@@ -37,7 +36,6 @@ public:
     QTreeWidget *treeWidget;
     QTableView *tableView;
     QTextBrowser *textBrowser;
-    QPushButton *showKfileBtn;
     QMenuBar *menuBar;
     QMenu *menu;
     QMenu *menuFile;
@@ -48,7 +46,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(895, 608);
+        MainWindow->resize(1178, 762);
         actionInfo = new QAction(MainWindow);
         actionInfo->setObjectName(QString::fromUtf8("actionInfo"));
         actionOpen = new QAction(MainWindow);
@@ -64,20 +62,17 @@ public:
         __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
         treeWidget->setHeaderItem(__qtreewidgetitem);
         treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
-        treeWidget->setGeometry(QRect(10, 10, 221, 211));
+        treeWidget->setGeometry(QRect(10, 10, 321, 301));
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(10, 220, 221, 221));
+        tableView->setGeometry(QRect(10, 310, 321, 381));
         textBrowser = new QTextBrowser(centralWidget);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        textBrowser->setGeometry(QRect(390, 10, 431, 431));
-        showKfileBtn = new QPushButton(centralWidget);
-        showKfileBtn->setObjectName(QString::fromUtf8("showKfileBtn"));
-        showKfileBtn->setGeometry(QRect(250, 180, 111, 71));
+        textBrowser->setGeometry(QRect(330, 10, 841, 681));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 895, 23));
+        menuBar->setGeometry(QRect(0, 0, 1178, 23));
         menu = new QMenu(menuBar);
         menu->setObjectName(QString::fromUtf8("menu"));
         menuFile = new QMenu(menuBar);
@@ -109,7 +104,6 @@ public:
         actionOpen->setText(QApplication::translate("MainWindow", "Open", nullptr));
         actionSave->setText(QApplication::translate("MainWindow", "Save", nullptr));
         actionImport->setText(QApplication::translate("MainWindow", "Import", nullptr));
-        showKfileBtn->setText(QApplication::translate("MainWindow", "Show K File", nullptr));
         menu->setTitle(QApplication::translate("MainWindow", "Start", nullptr));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi
