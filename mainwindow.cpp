@@ -33,8 +33,13 @@ void MainWindow::on_addWidgetItem_clicked()
 void MainWindow::initRootItem()
 {
 	// 一级结点
-    // 隐藏根节点项前的图标（展开折叠图标）
-    ui->treeWidget->setRootIsDecorated(false);
+	//隐藏根节点项前的图标（展开折叠图标）
+	ui->treeWidget->setRootIsDecorated(false);
+	//如果只是隐藏根点的展开折叠图标而子节点保留，则只需要上面语句
+	ui->treeWidget->setStyleSheet("QTreeView::branch:has-children:!has-siblings:closed,\
+	QTreeView::branch:closed:has-children:has-siblings{border-image: none; image: none;}\
+	QTreeView::branch:open:has-children:!has-siblings,\
+	QTreeView::branch:open:has - children : has - siblings{ border - image: none; image: none; }");
     // 设置树形视图的列数
     ui->treeWidget->setColumnCount(1);
 
@@ -66,8 +71,8 @@ void MainWindow::on_showKfileBtn_clicked() // showKfileBtn控件名字
 
 	// 添加文件的2级结点
 	QTreeWidgetItem *kfileitem = new QTreeWidgetItem(rootItem);
-	rootItem->setText(0, fileName);
-	rootItem->setIcon(0, QIcon("E:/_Files/kFiles/sec.png"));
+	kfileitem->setText(0, fileName.mid(fileName.lastIndexOf('/')+1));
+	kfileitem->setIcon(0, QIcon("E:/_Files/kFiles/fir.png"));	
 
 	QTextStream in(&file);
 	while (!in.atEnd()) {
@@ -75,13 +80,14 @@ void MainWindow::on_showKfileBtn_clicked() // showKfileBtn控件名字
 		QString str(line);
 		str.remove("\n");
 		if (str.at(0) == '*')
-			addKitem(*kfileitem,str.mid(1));
+			addKitem(kfileitem,str.mid(1));
 		ui->textBrowser->append(str);
 	}
+	ui->treeWidget->expandAll();
 	file.close();
 }
 
-void MainWindow::addKitem(QTreeWidgetItem root, QString item)
+void MainWindow::addKitem(QTreeWidgetItem* root, QString item)
 {
 	// 此处应为3级结点
 	// 添加子项

@@ -35,7 +35,6 @@ public:
     QAction *actionImport;
     QWidget *centralWidget;
     QTreeWidget *treeWidget;
-    QPushButton *addWidgetItem;
     QTableView *tableView;
     QTextBrowser *textBrowser;
     QPushButton *showKfileBtn;
@@ -66,9 +65,6 @@ public:
         treeWidget->setHeaderItem(__qtreewidgetitem);
         treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
         treeWidget->setGeometry(QRect(10, 10, 221, 211));
-        addWidgetItem = new QPushButton(centralWidget);
-        addWidgetItem->setObjectName(QString::fromUtf8("addWidgetItem"));
-        addWidgetItem->setGeometry(QRect(250, 70, 111, 71));
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setGeometry(QRect(10, 220, 221, 221));
@@ -113,7 +109,6 @@ public:
         actionOpen->setText(QApplication::translate("MainWindow", "Open", nullptr));
         actionSave->setText(QApplication::translate("MainWindow", "Save", nullptr));
         actionImport->setText(QApplication::translate("MainWindow", "Import", nullptr));
-        addWidgetItem->setText(QApplication::translate("MainWindow", "Add Item", nullptr));
         showKfileBtn->setText(QApplication::translate("MainWindow", "Show K File", nullptr));
         menu->setTitle(QApplication::translate("MainWindow", "Start", nullptr));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", nullptr));
