@@ -62,9 +62,15 @@ void MainWindow::on_treeWidget_itemSelectionChanged()
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
     // item文本:item->text(0）
     // item的属性值:用Json保存？
-    ui->textBrowser->append(item->text(0)+" click once");
-}
+    QMap<QString, QString> map1 = (*rootMap)['*'+item->text(0)];
 
+    QMap<QString, QString>::Iterator it = map1.begin();
+    while (it != map1.end())
+    {
+        ui->textBrowser->append(it.key()+ "\t"+ it.value());
+        it++;
+    }
+}
 
 // 已弃用
 void MainWindow::on_showKfileBtn_clicked() // showKfileBtn控件名字
@@ -147,7 +153,7 @@ void MainWindow::on_actionOpen_triggered()
             
             QStringList key = str.split(" "); // 下标1开始，最后一个为unused要丢弃
             int len = key.length();
-            if (key[len - 1] == "unused")
+            if (key[len - 1] == "unused" || key[len - 1] == "unused1"|| key[len - 1] == "unused2")
                 --len;
             QMap<QString, QString> itemMap;
             /*itemMap.insert("属性", "值");
@@ -155,11 +161,20 @@ void MainWindow::on_actionOpen_triggered()
 
             line = file.readLine(); // 属性的值 下标0开始
             QString strvalue(line);
+            strvalue.remove("\n");
+            ui->textBrowser->append(strvalue);
             strvalue = strvalue.simplified();
             QStringList value = strvalue.split(" "); // 下标0开始
             
-            for (int i = 0; i < len - 1; i++)
-                itemMap.insert(key[i + 1], value[i]);
+            for (int i = 0; i < len - 1; i++) {
+                QT_TRY{
+                    itemMap.insert(key[i + 1], value[i]);
+                }
+                QT_CATCH(...) {
+                    ui->textBrowser->append("出错信息" + QString::number(i));
+                }
+            }
+                
 
             rootMap->insert(kItem, itemMap);
 
@@ -169,8 +184,6 @@ void MainWindow::on_actionOpen_triggered()
     ui->treeWidget->expandAll();
     file.close();
 }
-
-
 
 // 递归删除节点
 void MainWindow::removeItem(QTreeWidgetItem* item)
