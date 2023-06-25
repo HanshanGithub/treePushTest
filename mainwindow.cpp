@@ -54,3 +54,19 @@ void MainWindow::on_treeWidget_itemSelectionChanged()
 }
 
 
+
+void MainWindow::on_showKfileBtn_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(// 正常加载
+                    this, "open image file",
+                    ".",
+                    "Image files (*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm);;All files (*.*)");
+//    QFile file("Hello.txt");
+    QFile file(fileName);
+    if(!file.open(QFile::ReadOnly|QFile::Text))
+//    qDebug() << "Can not open";
+    QTextStream iin(&file);
+    ui->textBrowser->setText(iin->readAll());
+    ui->textBrowser->show();
+
+}

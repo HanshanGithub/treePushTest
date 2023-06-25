@@ -6,6 +6,12 @@
 #include <QTreeWidgetItem>
 #include <QIcon>
 #include <QtWidgets/QWidget>
+#include <QFile>
+#include <QTextBrowser>
+#include <QDebug>
+#include <QTextStream>
+#include <QFileDialog>
+
 
 namespace Ui {
 class MainWindow;
@@ -22,6 +28,8 @@ public:
 private slots:
     void on_addWidgetItem_clicked();
     void on_treeWidget_itemSelectionChanged();
+
+    void on_showKfileBtn_clicked();
 
 private:
     Ui::MainWindow *ui;
