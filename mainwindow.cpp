@@ -18,20 +18,6 @@ MainWindow::~MainWindow()
 
 }
 
-// 已弃用
-void MainWindow::on_addWidgetItem_clicked()
-{
-    // 添加子项
-    QTreeWidgetItem *item1 = new QTreeWidgetItem(rootItem);
-    item1->setText(0, "Item "+QString::number(++itemNum));
-    item1->setIcon(0, QIcon("E:/_Files/kFiles/sec.png"));
-
-    // 展开根节点
-    ui->treeWidget->expandItem(rootItem);
-
-    // 显示树形视图
-    ui->treeWidget->show();
-}
 
 void MainWindow::initRootItem()
 {
@@ -90,34 +76,6 @@ void MainWindow::on_treeWidget_itemSelectionChanged()
     ui->tableView->show();
 }
 
-// 已弃用
-void MainWindow::on_showKfileBtn_clicked() // showKfileBtn控件名字
-{
-    QString fileName = QFileDialog::getOpenFileName(// 正常加载
-                    this, "open k file",
-                    ".",
-                    "k files (*.k);;All files (*.*)");
-	QFile file(fileName);
-	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-		return;
-
-	// 添加文件的2级结点
-	QTreeWidgetItem *kfileitem = new QTreeWidgetItem(rootItem);
-	kfileitem->setText(0, fileName.mid(fileName.lastIndexOf('/')+1));
-	kfileitem->setIcon(0, QIcon("E:/_Files/kFiles/fir.png"));	
-
-	QTextStream in(&file);
-	while (!in.atEnd()) {
-		QByteArray line = file.readLine();
-		QString str(line);
-		str.remove("\n");
-		if (str.at(0) == '*')
-			addKitem(kfileitem,str.mid(1));
-		ui->textBrowser->append(str);
-	}
-	ui->treeWidget->expandAll();
-	file.close();
-}
 
 // 添加子项
 void MainWindow::addKitem(QTreeWidgetItem* root, QString item)

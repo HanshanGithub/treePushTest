@@ -29,10 +29,8 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_addWidgetItem_clicked();
     void on_treeWidget_itemSelectionChanged();
 
-    void on_showKfileBtn_clicked();
 
     void on_actionOpen_triggered();
 
@@ -50,7 +48,6 @@ public:
 	void addKitem(QTreeWidgetItem* root,QString item);
     void removeItem(QTreeWidgetItem* item);
     void removeAll_treeWidgetItemv();
-    void addItemKv(QFile& file, QString&);
 };
 
 #endif // MAINWINDOW_H
