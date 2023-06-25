@@ -14,8 +14,11 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    // 删除QTreeWidget中所有节点
+
 }
 
+// 已弃用
 void MainWindow::on_addWidgetItem_clicked()
 {
     // 添加子项
@@ -40,6 +43,7 @@ void MainWindow::initRootItem()
 	QTreeView::branch:closed:has-children:has-siblings{border-image: none; image: none;}\
 	QTreeView::branch:open:has-children:!has-siblings,\
 	QTreeView::branch:open:has - children : has - siblings{ border - image: none; image: none; }");
+
     // 设置树形视图的列数
     ui->treeWidget->setColumnCount(1);
 
@@ -54,11 +58,13 @@ void MainWindow::initRootItem()
 void MainWindow::on_treeWidget_itemSelectionChanged()
 {
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
+    // item文本:item->text(0）
+    // item的属性值:用Json保存？
     ui->textBrowser->append(item->text(0)+" click once");
 }
 
 
-
+// 已弃用
 void MainWindow::on_showKfileBtn_clicked() // showKfileBtn控件名字
 {
     QString fileName = QFileDialog::getOpenFileName(// 正常加载
@@ -87,6 +93,7 @@ void MainWindow::on_showKfileBtn_clicked() // showKfileBtn控件名字
 	file.close();
 }
 
+// 添加子项
 void MainWindow::addKitem(QTreeWidgetItem* root, QString item)
 {
 	// 此处应为3级结点
@@ -118,14 +125,57 @@ void MainWindow::on_actionOpen_triggered()
     kfileitem->setIcon(0, QIcon("E:/_Files/kFiles/fir.png"));
 
     QTextStream in(&file);
+    QString kItem; // 上一个选项卡名字
     while (!in.atEnd()) {
         QByteArray line = file.readLine();
         QString str(line);
         str.remove("\n");
-        if (str.at(0) == '*')
-            addKitem(kfileitem,str.mid(1));
         ui->textBrowser->append(str);
+        // 判断选项卡
+        if (str.at(0) == '*') {
+            // 如果是则跳过
+            if (str == "*NODE" || str == "*ELEMENT_SOLID" || str == "*KEYWORD" || str == "*PARAMETER_DUPLICATION")
+                continue;
+            addKitem(kfileitem, str.mid(1));
+            kItem = str;
+        }
+        // 添加选项卡属性值
+        else if (str.at(0) == '$') {
+
+        }
     }
+
     ui->treeWidget->expandAll();
     file.close();
+}
+
+// 递归删除节点
+void MainWindow::removeItem(QTreeWidgetItem* item)
+{
+    int count = item->childCount();
+    if (count == 0)//没有子节点，直接删除
+    {
+        delete item;
+        return;
+    }
+
+    for (int i = 0; i < count; i++)
+    {
+        QTreeWidgetItem* childItem = item->child(0);//删除子节点
+        removeItem(childItem);
+    }
+    delete item;//最后将自己删除
+
+}
+
+void MainWindow::removeAll_treeWidgetItemv(void)
+{
+    //通过删除根节点及其子节点来达到删除整个TreeWidget的目的
+    QTreeWidgetItem* item;
+    item = ui->treeWidget->topLevelItem(0);
+    while (item)
+    {
+        removeItem(item);
+        item = ui->treeWidget->topLevelItem(0);
+    }
 }

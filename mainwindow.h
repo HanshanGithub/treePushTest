@@ -43,6 +43,8 @@ private:
 public:
     void initRootItem();
 	void addKitem(QTreeWidgetItem* root,QString item);
+    void removeItem(QTreeWidgetItem* item);
+    void removeAll_treeWidgetItemv();
 };
 
 #endif // MAINWINDOW_H
