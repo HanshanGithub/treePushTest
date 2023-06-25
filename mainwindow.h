@@ -11,6 +11,9 @@
 #include <QDebug>
 #include <QTextStream>
 #include <QFileDialog>
+#include <QStandardItemModel>
+#include <QTableView>
+#include <QHeaderView>
 
 
 namespace Ui {

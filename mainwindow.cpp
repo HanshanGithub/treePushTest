@@ -65,11 +65,29 @@ void MainWindow::on_treeWidget_itemSelectionChanged()
     QMap<QString, QString> map1 = (*rootMap)['*'+item->text(0)];
 
     QMap<QString, QString>::Iterator it = map1.begin();
+    int lineCount = 0;
+    
+
+    /* 创建数据模型 */
+    QStandardItemModel* model = new QStandardItemModel();
+    /* 设置表格标题行(输入数据为QStringList类型) */
+    model->setHorizontalHeaderLabels({ "Attribute", "value" });
+    /* 自适应所有列，让它布满空间 */
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    /* 加载数据 */
     while (it != map1.end())
     {
-        ui->textBrowser->append(it.key()+ "\t"+ it.value());
+        //ui->textBrowser->append(it.key() + "\t" + it.value());
+        model->setItem(lineCount, 0, new QStandardItem(it.key()));
+        model->setItem(lineCount, 1, new QStandardItem(it.value()));
         it++;
+        lineCount++;
     }
+    /* 设置表格视图数据 */
+    ui->tableView->setModel(model);
+    ui->tableView->verticalHeader()->hide();//不显示序号  
+    /* 显示 */
+    ui->tableView->show();
 }
 
 // 已弃用
