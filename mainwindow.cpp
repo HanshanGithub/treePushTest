@@ -132,7 +132,7 @@ void MainWindow::on_actionOpen_triggered()
         QByteArray line = file.readLine();
         QString str(line);
         str.remove("\n");
-        ui->textBrowser->append(str);
+        //ui->textBrowser->append(str);
         // 判断选项卡
         if (str.at(0) == '*') {
             // 如果是则跳过
@@ -142,7 +142,7 @@ void MainWindow::on_actionOpen_triggered()
             kItem = str;
         }
         // 添加选项卡属性值
-        else if (str.at(0) == '$') {
+        else if (str.at(0) == '$' && str.at(1)!= '#') {
             
             QStringList key = str.split(" "); // 下标1开始，最后一个为unused要丢弃
             int len = key.length();
