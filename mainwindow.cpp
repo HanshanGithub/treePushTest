@@ -46,13 +46,6 @@ void MainWindow::initRootItem()
 void MainWindow::on_treeWidget_itemSelectionChanged()
 {
     QTreeWidgetItem *item = ui->treeWidget->currentItem();
-    // item文本:item->text(0）
-    // item的属性值:用Json保存？
-    QMap<QString, QString>* map1 = (*rootMap)['*'+item->text(0)];
-
-    QMap<QString, QString>::Iterator it = map1->begin();
-    int lineCount = 0;
-    
 
     /* 创建数据模型 */
     QStandardItemModel* model = new QStandardItemModel();
@@ -60,14 +53,27 @@ void MainWindow::on_treeWidget_itemSelectionChanged()
     model->setHorizontalHeaderLabels({ "Attribute", "value" });
     /* 自适应所有列，让它布满空间 */
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    /* 加载数据 */
-    while (it != map1->end())
+
+    // item文本:item->text(0）
+    if ((*rootMap).find('*' + item->text(0)) == (*rootMap).end())
     {
-        //ui->textBrowser->append(it.key() + "\t" + it.value());
-        model->setItem(lineCount, 0, new QStandardItem(it.key()));
-        model->setItem(lineCount, 1, new QStandardItem(it.value()));
-        it++;
-        lineCount++;
+        model->setItem(0, 0, new QStandardItem("name"));
+        model->setItem(0, 1, new QStandardItem(item->text(0)));
+    }
+    else {
+        QMap<QString, QString>* map1 = (*rootMap)['*' + item->text(0)];
+        QMap<QString, QString>::Iterator it = map1->begin();
+        int lineCount = 0;
+
+        /* 加载数据 */
+        while (it != map1->end())
+        {
+            //ui->textBrowser->append(it.key() + "\t" + it.value());
+            model->setItem(lineCount, 0, new QStandardItem(it.key()));
+            model->setItem(lineCount, 1, new QStandardItem(it.value()));
+            it++;
+            lineCount++;
+        }
     }
     /* 设置表格视图数据 */
     ui->tableView->setModel(model);
@@ -193,7 +199,6 @@ void MainWindow::removeAll_treeWidgetItemv(void)
         item = ui->treeWidget->topLevelItem(0);
     }
 }
-
 
 void MainWindow::OnlineTreeViewDoubleClick(QTreeWidgetItem* indexItem, int itemID)
 {
