@@ -204,10 +204,20 @@ void MainWindow::removeAll_treeWidgetItemv(void)
     }
 }
 
-void MainWindow::OnlineTreeViewDoubleClick(QTreeWidgetItem* indexItem, int itemID)
+void MainWindow::OnlineTreeViewDoubleClick(QTreeWidgetItem* item, int itemID)
 {
-    QString itemText = indexItem->text(itemID);
-    ui->textBrowser->append(itemText);
+    QString itemText = item->text(itemID);
+    if ((*rootMap).find('*' + item->text(0)) == (*rootMap).end()) return;
+
+    QMap<QString, QString>* map1 = (*rootMap)['*' + item->text(0)];
+    QMap<QString, QString>::Iterator it = map1->begin();
+
+    while (it != map1->end())
+    {
+        //(it.key() + "\t" + it.value());
+
+        it++;
+    }
     kview = new Kviewer(this);
     kview->show();
 }

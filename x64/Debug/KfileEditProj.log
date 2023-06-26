@@ -1,7 +1,6 @@
-﻿  Generate moc_predefs.h
-  Uic'ing mainwindow.ui...
-  Moc'ing mainwindow.h...
+﻿  kviewer.cpp
   main.cpp
   mainwindow.cpp
+  moc_kviewer.cpp
   moc_mainwindow.cpp
-C:\Users\16340\AppData\Local\QtMsBuild\qt_globals.targets(786,7): error MSB4184: 无法计算表达式“[System.IO.File]::ReadAllText(C:\Users\16340\AppData\Local\QtMsBuild\qt.natvis.xml)”。未能找到文件“C:\Users\16340\AppData\Local\QtMsBuild\qt.natvis.xml”。
+  KfileEditProj.vcxproj -> E:\QtProject\KfileEditProj\debug\KfileEditProj.exe
