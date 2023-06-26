@@ -99,13 +99,13 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        actionInfo->setText(QApplication::translate("MainWindow", "Info", nullptr));
-        actionOpen->setText(QApplication::translate("MainWindow", "Open", nullptr));
-        actionSave->setText(QApplication::translate("MainWindow", "Save", nullptr));
-        actionImport->setText(QApplication::translate("MainWindow", "Import", nullptr));
-        menu->setTitle(QApplication::translate("MainWindow", "Start", nullptr));
-        menuFile->setTitle(QApplication::translate("MainWindow", "File", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", " K\346\226\207\344\273\266\345\272\224\347\224\250\347\263\273\347\273\237", nullptr));
+        actionInfo->setText(QApplication::translate("MainWindow", "\345\205\263\344\272\216", nullptr));
+        actionOpen->setText(QApplication::translate("MainWindow", "\346\211\223\345\274\200", nullptr));
+        actionSave->setText(QApplication::translate("MainWindow", "\344\277\235\345\255\230", nullptr));
+        actionImport->setText(QApplication::translate("MainWindow", "\345\257\274\345\207\272", nullptr));
+        menu->setTitle(QApplication::translate("MainWindow", "\345\274\200\345\247\213", nullptr));
+        menuFile->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266", nullptr));
     } // retranslateUi
 
 };

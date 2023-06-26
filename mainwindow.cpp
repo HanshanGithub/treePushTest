@@ -141,7 +141,7 @@ void MainWindow::on_actionOpen_triggered()
             if (key[len - 1] == "unused" || key[len - 1] == "unused1"|| key[len - 1] == "unused2")
                 --len;
             /*itemMap.insert("属性", "值");*/
-            itemMap->insert("Name", kItem.mid(1));
+            itemMap->insert(u8"名称", kItem.mid(1));
 
             line = file.readLine(); // 属性的值 下标0开始
             QString strvalue(line);
@@ -205,5 +205,4 @@ void MainWindow::OnlineTreeViewDoubleClick(QTreeWidgetItem* indexItem, int itemI
 {
     QString itemText = indexItem->text(itemID);
     ui->textBrowser->append(itemText);
-    //qDebug() << "--" << itemText;
 }
