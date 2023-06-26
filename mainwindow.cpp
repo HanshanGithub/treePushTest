@@ -213,7 +213,8 @@ void MainWindow::OnlineTreeViewDoubleClick(QTreeWidgetItem* item, int itemID)
     QMap<QString, QString>* map1 = (*rootMap)['*' + item->text(0)];
     QMap<QString, QString>::Iterator it = map1->begin();
     kview = new Kviewer(this);
-    kview->setWindowTitle(itemText);
+    kview->setWindowTitle(Kviewer::tr(itemText.toStdString().c_str()));
+    //kview->setWindowTitle(tr(itemText));
     int labelCount = 0;
     int w = 90, h = 30, px = 10, py = 40;
 
@@ -228,11 +229,11 @@ void MainWindow::OnlineTreeViewDoubleClick(QTreeWidgetItem* item, int itemID)
         }
         
         QLabel* label = new QLabel(kview);
-        label->setText(k);
+        label->setText(Kviewer::tr(k.toStdString().c_str()));// tr(v.toStdString().c_str())
         label->setGeometry((w+px)*(labelCount%5)+45,(h+py)*(labelCount/5),w,h);
 
         QTextEdit* value = new QTextEdit(kview);
-        value->setText(v);
+        value->setText(Kviewer::tr(v.toStdString().c_str()));
         value->setGeometry((w + px) * (labelCount % 5) + 45, (h + py) * (labelCount / 5) + 35, w, h);
 
         labelCount++;

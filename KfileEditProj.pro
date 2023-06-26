@@ -37,6 +37,9 @@ FORMS += \
         mainwindow.ui \
     kviewer.ui
 
+TRANSLATIONS = app_en.ts \
+               app_zh.ts
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
