@@ -219,6 +219,8 @@ void MainWindow::OnlineTreeViewDoubleClick(QTreeWidgetItem* item, int itemID)
         it++;
     }
     kview = new Kviewer(this);
+    kview->setWindowTitle(itemText);
+    kview->resize(300, 200);
     kview->show();
 }
 

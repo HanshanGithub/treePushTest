@@ -1,6 +1,2 @@
-﻿  kviewer.cpp
-  main.cpp
-  mainwindow.cpp
-  moc_kviewer.cpp
-  moc_mainwindow.cpp
+﻿  mainwindow.cpp
   KfileEditProj.vcxproj -> E:\QtProject\KfileEditProj\debug\KfileEditProj.exe
