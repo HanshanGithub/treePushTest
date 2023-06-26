@@ -1,5 +1,7 @@
+﻿#pragma execution_character_set("utf-8")
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -51,14 +53,14 @@ void MainWindow::on_treeWidget_itemSelectionChanged()
     /* 创建数据模型 */
     QStandardItemModel* model = new QStandardItemModel();
     /* 设置表格标题行(输入数据为QStringList类型) */
-    model->setHorizontalHeaderLabels({ "Attribute", "value" });
+    model->setHorizontalHeaderLabels({ "属性", "值" });
     /* 自适应所有列，让它布满空间 */
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     // item文本:item->text(0）
     if ((*rootMap).find('*' + item->text(0)) == (*rootMap).end())
     {
-        model->setItem(0, 0, new QStandardItem("name"));
+        model->setItem(0, 0, new QStandardItem("名字"));
         model->setItem(0, 1, new QStandardItem(item->text(0)));
     }
     else {
@@ -141,7 +143,7 @@ void MainWindow::on_actionOpen_triggered()
             if (key[len - 1] == "unused" || key[len - 1] == "unused1"|| key[len - 1] == "unused2")
                 --len;
             /*itemMap.insert("属性", "值");*/
-            itemMap->insert(u8"名称", kItem.mid(1));
+            itemMap->insert("名字", kItem.mid(1));
 
             line = file.readLine(); // 属性的值 下标0开始
             QString strvalue(line);
