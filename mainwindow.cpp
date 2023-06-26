@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     itemNum = 0 ;
     initRootItem();
+    connect(ui->treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem*, int)), this, SLOT(OnlineTreeViewDoubleClick(QTreeWidgetItem*, int)));
 }
 
 MainWindow::~MainWindow()
@@ -203,5 +204,6 @@ void MainWindow::removeAll_treeWidgetItemv(void)
 void MainWindow::OnlineTreeViewDoubleClick(QTreeWidgetItem* indexItem, int itemID)
 {
     QString itemText = indexItem->text(itemID);
+    ui->textBrowser->append(itemText);
     //qDebug() << "--" << itemText;
 }

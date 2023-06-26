@@ -42,8 +42,6 @@ private:
     // 2级结点的键值
     QMap<QString, QMap<QString, QString>*> *rootMap;
 
-    // 双击响应
-    QTreeWidget* treeWidget_set;
 
 public:
     void initRootItem();
