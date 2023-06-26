@@ -13,8 +13,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QTextEdit>
 
 QT_BEGIN_NAMESPACE
 
@@ -22,8 +20,6 @@ class Ui_Kviewer
 {
 public:
     QDialogButtonBox *buttonBox;
-    QLabel *label;
-    QTextEdit *textEdit;
 
     void setupUi(QDialog *Kviewer)
     {
@@ -32,15 +28,9 @@ public:
         Kviewer->resize(966, 331);
         buttonBox = new QDialogButtonBox(Kviewer);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setGeometry(QRect(600, 290, 341, 32));
+        buttonBox->setGeometry(QRect(590, 260, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
-        label = new QLabel(Kviewer);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(40, 30, 54, 12));
-        textEdit = new QTextEdit(Kviewer);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(20, 60, 101, 31));
 
         retranslateUi(Kviewer);
         QObject::connect(buttonBox, SIGNAL(accepted()), Kviewer, SLOT(accept()));
@@ -52,7 +42,6 @@ public:
     void retranslateUi(QDialog *Kviewer)
     {
         Kviewer->setWindowTitle(QApplication::translate("Kviewer", "Dialog", nullptr));
-        label->setText(QApplication::translate("Kviewer", "TextLabel", nullptr));
     } // retranslateUi
 
 };

@@ -1,6 +1,7 @@
 ﻿#pragma execution_character_set("utf-8")
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QLabel>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -211,16 +212,34 @@ void MainWindow::OnlineTreeViewDoubleClick(QTreeWidgetItem* item, int itemID)
 
     QMap<QString, QString>* map1 = (*rootMap)['*' + item->text(0)];
     QMap<QString, QString>::Iterator it = map1->begin();
+    kview = new Kviewer(this);
+    kview->setWindowTitle(itemText);
+    int labelCount = 0;
+    int w = 90, h = 30, px = 10, py = 40;
 
     while (it != map1->end())
     {
         //(it.key() + "\t" + it.value());
+        QString k = it.key();
+        QString v = it.value();
+        if (k == "名字") {
+            it++;
+            continue;
+        }
+        
+        QLabel* label = new QLabel(kview);
+        label->setText(k);
+        label->setGeometry((w+px)*(labelCount%5)+45,(h+py)*(labelCount/5),w,h);
 
+        QTextEdit* value = new QTextEdit(kview);
+        value->setText(v);
+        value->setGeometry((w + px) * (labelCount % 5) + 45, (h + py) * (labelCount / 5) + 35, w, h);
+
+        labelCount++;
         it++;
     }
-    kview = new Kviewer(this);
-    kview->setWindowTitle(itemText);
-    kview->resize(300, 200);
+   
+    kview->resize((w+px)*6, (h+py)*(labelCount/5+1)+20);
     kview->show();
 }
 
