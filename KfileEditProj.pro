@@ -26,13 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    kviewer.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    kviewer.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    kviewer.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

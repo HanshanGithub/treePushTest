@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -14,7 +14,7 @@
 #include <QStandardItemModel>
 #include <QTableView>
 #include <QHeaderView>
-
+#include "kviewer.h"
 
 namespace Ui {
 class MainWindow;
@@ -33,6 +33,7 @@ private slots:
     void on_actionOpen_triggered();
     void OnlineTreeViewDoubleClick(QTreeWidgetItem*, int);
 
+
 private:
     Ui::MainWindow *ui;
     // 添加根节点
@@ -41,6 +42,7 @@ private:
     int itemNum;
     // 2级结点的键值
     QMap<QString, QMap<QString, QString>*> *rootMap;
+    Kviewer *kview;
 
 
 public:
