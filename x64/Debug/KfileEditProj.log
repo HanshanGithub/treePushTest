@@ -1,2 +1,5 @@
-﻿  mainwindow.cpp
+﻿  Moc'ing mainwindow.h...
+  moc_mainwindow.cpp
+  main.cpp
+  mainwindow.cpp
   KfileEditProj.vcxproj -> E:\QtProject\KfileEditProj\debug\KfileEditProj.exe

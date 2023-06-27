@@ -37,7 +37,7 @@ FORMS += \
         mainwindow.ui \
     kviewer.ui
 
-TRANSLATIONS = app_en.ts \
+TRANSLATIONS = app_en.ts \ 
                app_zh.ts
 
 #TRANSLATIONS = app_en.ts \
