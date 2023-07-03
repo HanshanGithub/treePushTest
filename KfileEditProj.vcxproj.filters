@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Form Files">
@@ -35,6 +35,16 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts;xlf</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts;xlf</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="kviewer.cpp">
@@ -48,18 +58,26 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="kviewer.h">
+    <CustomBuild Include="kviewer.h">
       <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="mainwindow.h">
+    </CustomBuild>
+    <CustomBuild Include="mainwindow.h">
       <Filter>Header Files</Filter>
-    </QtMoc>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    
-    
-    
-    
+    <ClCompile Include="debug\moc_kviewer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_kviewer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_mainwindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_mainwindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
@@ -74,11 +92,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="kviewer.ui">
+    <None Include="app_en.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="app_zh.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="kviewer.ui">
       <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="mainwindow.ui">
+    </CustomBuild>
+    <CustomBuild Include="mainwindow.ui">
       <Filter>Form Files</Filter>
-    </QtUic>
+    </CustomBuild>
   </ItemGroup>
 </Project>

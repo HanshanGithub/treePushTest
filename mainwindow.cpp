@@ -42,8 +42,8 @@ void MainWindow::initRootItem()
     ui->treeWidget->header()->setVisible(false);
 
     rootItem = new QTreeWidgetItem(ui->treeWidget);
-    rootItem->setText(0, "Excitation numerical analysis");//中文乱码，目前是编码问题
-    rootItem->setIcon(0, QIcon("E:/_Files/kFiles/fir.png"));
+    rootItem->setText(0, "激活能量数值");//中文乱码，目前是编码问题
+    rootItem->setIcon(0, QIcon("E:/Logo/fir.png"));
 
     rootMap = new QMap<QString, QMap<QString, QString>*>();
 }
@@ -58,7 +58,6 @@ void MainWindow::on_treeWidget_itemSelectionChanged()
     model->setHorizontalHeaderLabels({ "属性", "值" });
     /* 自适应所有列，让它布满空间 */
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
     // item文本:item->text(0）
     if ((*rootMap).find('*' + item->text(0)) == (*rootMap).end())
     {
@@ -95,7 +94,7 @@ void MainWindow::addKitem(QTreeWidgetItem* root, QString item)
 	// 添加子项
 	QTreeWidgetItem *item1 = new QTreeWidgetItem(root);
 	item1->setText(0, item);
-	item1->setIcon(0, QIcon("E:/_Files/kFiles/sec.png"));
+    item1->setIcon(0, QIcon("E:/Logo/sec.png"));
 
 	// 展开根节点
 	ui->treeWidget->expandItem(rootItem);
@@ -117,7 +116,7 @@ void MainWindow::on_actionOpen_triggered()
     // 添加文件的2级结点
     QTreeWidgetItem *kfileitem = new QTreeWidgetItem(rootItem);
     kfileitem->setText(0, fileName.mid(fileName.lastIndexOf('/')+1));
-    kfileitem->setIcon(0, QIcon("E:/_Files/kFiles/fir.png"));
+    kfileitem->setIcon(0, QIcon("E:/Logo/fir.png"));
 
     QTextStream in(&file);
     QString kItem; // 上一个选项卡名字
