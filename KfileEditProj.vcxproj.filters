@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Form Files">
@@ -58,38 +58,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="kviewer.h">
+    <QtMoc Include="kviewer.h">
       <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="mainwindow.h">
+    </QtMoc>
+    <QtMoc Include="mainwindow.h">
       <Filter>Header Files</Filter>
-    </CustomBuild>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="debug\moc_kviewer.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="release\moc_kviewer.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="debug\moc_mainwindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="release\moc_mainwindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
     <CustomBuild Include="release\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
-    <ClInclude Include="ui_kviewer.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_mainwindow.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="app_en.ts">
@@ -100,11 +82,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="kviewer.ui">
+    <QtUic Include="kviewer.ui">
       <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="mainwindow.ui">
+    </QtUic>
+    <QtUic Include="mainwindow.ui">
       <Filter>Form Files</Filter>
-    </CustomBuild>
+    </QtUic>
   </ItemGroup>
 </Project>
